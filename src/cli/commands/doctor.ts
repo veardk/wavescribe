@@ -1,3 +1,4 @@
+import os from "node:os";
 import { resolveTools } from "../../config/config.ts";
 import { cacheDir, configFile } from "../../config/paths.ts";
 import type { Env } from "../../pipeline.ts";
@@ -33,6 +34,7 @@ export async function cmdDoctor(v: Values, env: Env): Promise<number> {
   const hasConfig = await exists(configFile());
   const spotify = await savedSpotify(env.cfg);
   const checks: Check[] = [
+    { name: "system", ok: true, detail: `${os.type()} ${os.release()} (${process.arch})` },
     { name: "node", ok: true, detail: process.version },
     await versionOf("ffmpeg", tools.ffmpeg, ["-version"], true),
     await versionOf("ffprobe", tools.ffprobe, ["-version"], true),
