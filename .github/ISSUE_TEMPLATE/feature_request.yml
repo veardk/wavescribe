@@ -1,0 +1,30 @@
+name: Feature request
+description: A new source, provider, output format or option
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Source (a site or input type)
+        - Speech-to-text provider
+        - Output format
+        - CLI / configuration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you want to do?
+      description: The task you are trying to get done, and why the current options do not cover it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Example links, API documentation for a provider, or the output you expect.

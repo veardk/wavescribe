@@ -1,0 +1,58 @@
+name: Bug report
+description: Something went wrong with wavescribe
+labels: ["bug"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: What you expected, and what actually happened.
+      placeholder: I ran `wavescribe <link> -f srt` and got subtitles from a different video.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: How to reproduce
+      description: The exact command, and the input (link or file type). Never paste API keys or cookies.
+      placeholder: |
+        wavescribe "https://www.bilibili.com/video/BV…" -f srt -v
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: wavescribe version
+      description: Output of `wavescribe --version`.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: doctor
+    attributes:
+      label: wavescribe doctor
+      description: Output of `wavescribe doctor` (OS, Node, ffmpeg and yt-dlp versions; keys are never shown).
+      render: text
+    validations:
+      required: true
+
+  - type: input
+    id: provider
+    attributes:
+      label: Provider and model
+      description: If speech-to-text was involved, e.g. `groq / whisper-large-v3`.
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Output with -v
+      description: Relevant `-v` (verbose) output or the error message.
+      render: text
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else

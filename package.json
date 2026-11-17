@@ -1,0 +1,77 @@
+{
+  "name": "wavescribe",
+  "version": "0.1.0",
+  "description": "Turn audio, video, podcasts and subtitle sources into timestamped transcripts (srt / vtt / json / txt / md) via pluggable speech-to-text APIs.",
+  "keywords": [
+    "transcript",
+    "subtitles",
+    "speech-to-text",
+    "asr",
+    "whisper",
+    "podcast",
+    "youtube",
+    "bilibili",
+    "srt",
+    "vtt",
+    "cli"
+  ],
+  "license": "MIT",
+  "author": "Levon",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veardk/wavescribe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/veardk/wavescribe/issues"
+  },
+  "homepage": "https://github.com/veardk/wavescribe#readme",
+  "type": "module",
+  "bin": {
+    "wavescribe": "dist/cli/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./plugin": {
+      "types": "./dist/plugin.d.ts",
+      "default": "./dist/plugin.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "node src/cli/index.ts",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json && node -e \"require('node:fs').chmodSync('dist/cli/index.js', 0o755)\"",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "check": "npm run lint && npm run typecheck && npm test",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.9.0",
+    "fast-xml-parser": "^5.2.5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.0"
+  }
+}
