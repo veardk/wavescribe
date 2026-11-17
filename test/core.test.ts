@@ -136,6 +136,43 @@ test("exporters", () => {
   assert.match(EXPORTERS.md!.render(t, { timestamps: false }), /^# T\n/);
 });
 
+test("md exporter writes English metadata labels", () => {
+  const t: Transcript = {
+    version: 1,
+    source: {
+      input: "x",
+      id: "x",
+      kind: "url",
+      title: "T",
+      uploader: "Acme",
+      url: "https://example.com/ep",
+      published: "2026-11-01T08:00:00Z",
+      duration: 125,
+    },
+    origin: "asr",
+    timed: true,
+    segments: [{ start: 0, text: "Hello" }],
+    provenance: { provider: "groq", model: "m", createdAt: "2026-01-01" },
+  };
+  assert.equal(
+    EXPORTERS.md!.render(t, { timestamps: false }),
+    [
+      "# T",
+      "",
+      "- Source: Acme",
+      "- Link: https://example.com/ep",
+      "- Published: 2026-11-01",
+      "- Duration: 02:05",
+      "- Text origin: asr (groq · m)",
+      "",
+      "---",
+      "",
+      "Hello",
+      "",
+    ].join("\n"),
+  );
+});
+
 test("download watchdog aborts only after a quiet period", async () => {
   const quiet = new AbortController();
   idleWatchdog(quiet, 20);

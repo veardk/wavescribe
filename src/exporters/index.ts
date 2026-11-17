@@ -64,11 +64,11 @@ export const EXPORTERS: Record<string, Exporter> = {
     render: (t, o) => {
       const src = t.source;
       const meta = [
-        src.uploader && `- 来源 / Source: ${src.uploader}`,
-        src.url && `- 链接 / Link: ${src.url}`,
-        src.published && `- 发布 / Published: ${src.published.slice(0, 10)}`,
-        src.duration && `- 时长 / Duration: ${formatClock(src.duration)}`,
-        `- 文字来源 / Text origin: ${t.origin}${t.provenance.provider ? ` (${t.provenance.provider} · ${t.provenance.model})` : t.provenance.fetcher ? ` (${t.provenance.fetcher})` : ""}`,
+        src.uploader && `- Source: ${src.uploader}`,
+        src.url && `- Link: ${src.url}`,
+        src.published && `- Published: ${src.published.slice(0, 10)}`,
+        src.duration && `- Duration: ${formatClock(src.duration)}`,
+        `- Text origin: ${t.origin}${t.provenance.provider ? ` (${t.provenance.provider} · ${t.provenance.model})` : t.provenance.fetcher ? ` (${t.provenance.fetcher})` : ""}`,
       ].filter(Boolean);
       const body = t.segments
         .map(
