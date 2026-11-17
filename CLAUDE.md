@@ -1,2 +1,2 @@
-<!-- Claude 通过 import 读取 AGENTS.md；请编辑 AGENTS.md，不要改这个文件。 -->
+<!-- Claude reads AGENTS.md through this import; edit AGENTS.md, not this file. -->
 @AGENTS.md
