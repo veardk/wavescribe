@@ -1,6 +1,6 @@
 {
   "name": "wavescribe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Turn audio, video, podcasts and subtitle sources into timestamped transcripts (srt / vtt / json / txt / md) via pluggable speech-to-text APIs.",
   "keywords": [
     "transcript",
